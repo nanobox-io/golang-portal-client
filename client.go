@@ -95,7 +95,7 @@ func (self PortalClient) CreateRoute(route Route) error {
 	// Post /routes
 	return self.do("POST", "/routes", route, nil)
 }
-func (self PortalClient) UpdateRoute(routes []Route) error {
+func (self PortalClient) UpdateRoutes(routes []Route) error {
 	// Put /routes
 	return self.do("PUT", "/routes", routes, nil)
 }

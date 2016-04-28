@@ -14,6 +14,7 @@ type (
 	Service struct {
 		Id          string   `json:"id,omitempty"`
 		Host        string   `json:"host"`
+		Interface   string   `json:"interface,omitempty"`
 		Port        int      `json:"port"`
 		Type        string   `json:"type"`
 		Scheduler   string   `json:"scheduler"`
