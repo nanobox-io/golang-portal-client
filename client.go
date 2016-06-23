@@ -140,7 +140,7 @@ func (self PortalClient) do(method, path string, requestBody, responseBody inter
 	if err != nil {
 		return err
 	}
-	req.Header.Add("X-NANOBOX-TOKEN", self.token)
+	req.Header.Add("X-AUTH-TOKEN", self.token)
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return err
