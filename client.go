@@ -136,7 +136,7 @@ func (self PortalClient) do(method, path string, requestBody, responseBody inter
 		rbodyReader = bytes.NewBuffer(jsonBytes)
 	}
 
-	req, err := http.NewRequest(method, fmt.Sprintf("https://%s/%s", self.host, path), rbodyReader)
+	req, err := http.NewRequest(method, fmt.Sprintf("https://%s%s", self.host, path), rbodyReader)
 	if err != nil {
 		return err
 	}
@@ -144,6 +144,9 @@ func (self PortalClient) do(method, path string, requestBody, responseBody inter
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return err
+	}
+	if res.StatusCode < 200 || res.StatusCode >= 300 {
+		return fmt.Errorf("Bad exit code (%d)", res.StatusCode)
 	}
 
 	if responseBody != nil {
